@@ -1,7 +1,7 @@
-/**
+/*
 * @license Apache-2.0
 *
-* Copyright (c) 2023 The Stdlib Authors.
+* Copyright (c) 2021 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -16,22 +16,17 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
 
-// MODULES //
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@main/index.d.ts"/>
 
-var Complex128 = require( '@stdlib/complex-float64' );
-var addon = require( './../src/addon.node' );
-
-
-// MAIN //
+import { Complex128 } from '@stdlib/types/complex';
 
 /**
-* Evaluates the identity function for a double-precision complex floating-point number.
+* Evaluates the identity function for double-precision complex floating-point number.
 *
-* @private
-* @param {Complex128} z - input value
-* @returns {Complex128} input value
+* @param z - input value
+* @returns input value
 *
 * @example
 * var Complex128 = require( '@stdlib/complex-float64' );
@@ -47,12 +42,9 @@ var addon = require( './../src/addon.node' );
 * var im = imag( v );
 * // returns 2.0
 */
-function cidentify( z ) {
-	var v = addon( z );
-	return new Complex128( v.re, v.im );
-}
+declare function cidentity( z: Complex128 ): Complex128;
 
 
 // EXPORTS //
 
-module.exports = cidentify;
+export = cidentity;

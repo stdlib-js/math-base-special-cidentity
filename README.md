@@ -58,38 +58,32 @@ for all `z`.
 
 <!-- /.intro -->
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/math-base-special-cidentity
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
+-   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
-To use in Observable,
-
 ```javascript
-cidentity = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-cidentity@umd/browser.js' )
-```
-
-To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
-
-```javascript
-var cidentity = require( 'path/to/vendor/umd/math-base-special-cidentity/index.js' )
-```
-
-To include the bundle in a webpage,
-
-```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-cidentity@umd/browser.js"></script>
-```
-
-If no recognized module system is present, access bundle contents via the global scope:
-
-```html
-<script type="text/javascript">
-(function () {
-    window.cidentity;
-})();
-</script>
+var cidentity = require( '@stdlib/math-base-special-cidentity' );
 ```
 
 #### cidentity( z )
@@ -123,15 +117,10 @@ var im = imag( v );
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/random-base-discrete-uniform@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/complex-float64@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-cidentity@umd/browser.js"></script>
-<script type="text/javascript">
-(function () {
+```javascript
+var discreteUniform = require( '@stdlib/random-base-discrete-uniform' );
+var Complex128 = require( '@stdlib/complex-float64' );
+var cidentity = require( '@stdlib/math-base-special-cidentity' );
 
 var z;
 var i;
@@ -139,11 +128,6 @@ for ( i = 0; i < 100; i++ ) {
     z = new Complex128( discreteUniform( -50, 50 ), discreteUniform( -50, 50 ) );
     console.log( 'identity(%s) = %s', z, cidentity( z ) );
 }
-
-})();
-</script>
-</body>
-</html>
 ```
 
 </section>
@@ -152,7 +136,113 @@ for ( i = 0; i < 100; i++ ) {
 
 <!-- C interface documentation. -->
 
+* * *
 
+<section class="c">
+
+## C APIs
+
+<!-- Section to include introductory text. Make sure to keep an empty line after the intro `section` element and another before the `/section` close. -->
+
+<section class="intro">
+
+</section>
+
+<!-- /.intro -->
+
+<!-- C usage documentation. -->
+
+<section class="usage">
+
+### Usage
+
+```c
+#include "stdlib/math/base/special/cidentity.h"
+```
+
+#### stdlib_base_cidentity( z )
+
+Evaluates the identity function for a double-precision complex floating-point number.
+
+```c
+#include "stdlib/complex/float64.h"
+#include "stdlib/complex/real.h"
+#include "stdlib/complex/imag.h"
+
+stdlib_complex128_t z = stdlib_complex128( 2.5, -1.5 );
+stdlib_complex128_t out = stdlib_base_cidentity( z );
+
+double re = stdlib_real( out );
+// returns 2.5
+
+double im = stdlib_imag( out );
+// returns -1.5
+```
+
+The function accepts the following arguments:
+
+-   **z**: `[in] stdlib_complex128_t` input value.
+
+```c
+stdlib_complex128_t stdlib_base_cidentity( const stdlib_complex128_t z );
+```
+
+</section>
+
+<!-- /.usage -->
+
+<!-- C API usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
+
+<section class="notes">
+
+</section>
+
+<!-- /.notes -->
+
+<!-- C API usage examples. -->
+
+<section class="examples">
+
+### Examples
+
+```c
+#include "stdlib/math/base/special/cidentity.h"
+#include "stdlib/complex/float64.h"
+#include "stdlib/complex/reim.h"
+#include <stdio.h>
+
+int main() {
+    const stdlib_complex128_t x[] = {
+        stdlib_complex128( 3.14, 1.5 ),
+        stdlib_complex128( -3.14, -1.5 ),
+        stdlib_complex128( 0.0, 0.0 ),
+        stdlib_complex128( 0.0/0.0, 0.0/0.0 )
+    };
+
+    stdlib_complex128_t v;
+    stdlib_complex128_t y;
+    double re1;
+    double im1;
+    double re2;
+    double im2;
+    int i;
+    for ( i = 0; i < 4; i++ ) {
+        v = x[ i ];
+        y = stdlib_base_cidentity( v );
+        stdlib_reim( v, &re1, &im1 );
+        stdlib_reim( y, &re2, &im2 );
+        printf( "cidentity(%lf + %lfi) = %lf + %lfi\n", re1, im1, re2, im2 );
+    }
+}
+```
+
+</section>
+
+<!-- /.examples -->
+
+</section>
+
+<!-- /.c -->
 
 <!-- Section for related `stdlib` packages. Do not manually edit this section, as it is automatically populated. -->
 
@@ -243,13 +333,13 @@ Copyright &copy; 2016-2024. The Stdlib [Authors][stdlib-authors].
 
 [identity-function]: https://en.wikipedia.org/wiki/Identity_function
 
-[@stdlib/complex/float64]: https://github.com/stdlib-js/complex-float64/tree/umd
+[@stdlib/complex/float64]: https://github.com/stdlib-js/complex-float64
 
 <!-- <related-links> -->
 
-[@stdlib/math/base/special/cidentityf]: https://github.com/stdlib-js/math-base-special-cidentityf/tree/umd
+[@stdlib/math/base/special/cidentityf]: https://github.com/stdlib-js/math-base-special-cidentityf
 
-[@stdlib/math/base/special/identity]: https://github.com/stdlib-js/math-base-special-identity/tree/umd
+[@stdlib/math/base/special/identity]: https://github.com/stdlib-js/math-base-special-identity
 
 <!-- </related-links> -->
 

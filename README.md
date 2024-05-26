@@ -33,7 +33,7 @@ limitations under the License.
 
 [![NPM version][npm-image]][npm-url] [![Build Status][test-image]][test-url] [![Coverage Status][coverage-image]][coverage-url] <!-- [![dependencies][dependencies-image]][dependencies-url] -->
 
-> Evaluate the [identity function][identity-function] of a double-precision [complex][@stdlib/complex/float64] floating-point number.
+> Evaluate the [identity function][identity-function] of a double-precision [complex][@stdlib/complex/float64/ctor] floating-point number.
 
 <section class="intro">
 
@@ -88,10 +88,10 @@ var cidentity = require( '@stdlib/math-base-special-cidentity' );
 
 #### cidentity( z )
 
-Evaluates the [identity function][identity-function] for a double-precision [complex][@stdlib/complex/float64] floating-point number.
+Evaluates the [identity function][identity-function] for a double-precision [complex][@stdlib/complex/float64/ctor] floating-point number.
 
 ```javascript
-var Complex128 = require( '@stdlib/complex-float64' );
+var Complex128 = require( '@stdlib/complex-float64-ctor' );
 var real = require( '@stdlib/complex-real' );
 var imag = require( '@stdlib/complex-imag' );
 
@@ -119,7 +119,7 @@ var im = imag( v );
 
 ```javascript
 var discreteUniform = require( '@stdlib/random-base-discrete-uniform' );
-var Complex128 = require( '@stdlib/complex-float64' );
+var Complex128 = require( '@stdlib/complex-float64-ctor' );
 var cidentity = require( '@stdlib/math-base-special-cidentity' );
 
 var z;
@@ -165,7 +165,7 @@ for ( i = 0; i < 100; i++ ) {
 Evaluates the identity function for a double-precision complex floating-point number.
 
 ```c
-#include "stdlib/complex/float64.h"
+#include "stdlib/complex/float64/ctor.h"
 #include "stdlib/complex/real.h"
 #include "stdlib/complex/imag.h"
 
@@ -207,7 +207,7 @@ stdlib_complex128_t stdlib_base_cidentity( const stdlib_complex128_t z );
 
 ```c
 #include "stdlib/math/base/special/cidentity.h"
-#include "stdlib/complex/float64.h"
+#include "stdlib/complex/float64/ctor.h"
 #include "stdlib/complex/reim.h"
 #include <stdio.h>
 
@@ -333,7 +333,7 @@ Copyright &copy; 2016-2024. The Stdlib [Authors][stdlib-authors].
 
 [identity-function]: https://en.wikipedia.org/wiki/Identity_function
 
-[@stdlib/complex/float64]: https://github.com/stdlib-js/complex-float64
+[@stdlib/complex/float64/ctor]: https://github.com/stdlib-js/complex-float64-ctor
 
 <!-- <related-links> -->
 
